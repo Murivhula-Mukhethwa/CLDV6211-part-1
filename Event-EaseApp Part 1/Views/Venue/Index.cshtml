@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Event_EaseApp.Models.Venue>
+
+<h2>Venues</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Venue</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Venue Name</th>
+            <th>Location</th>
+            <th>Image</th>
+            <th>Capacity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venue in Model)
+        {
+            <tr>
+                <td>@venue.VenueName</td>
+                <td>@venue.Location</td>
+                <td>
+                    <img src="@venue.ImageUrl" alt="Image" style="max-width: 100px; height: auto;" />
+                </td>
+                <td>@venue.Capacity</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@venue.VenueID" class="btn btn-sm btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@venue.VenueID" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
